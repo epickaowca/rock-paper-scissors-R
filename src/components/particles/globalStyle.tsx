@@ -11,12 +11,12 @@ html,
   }
   body{
     min-height: 100vh;
-    background: #1F3756;
+    background: ${(p) => p.theme.colors.bgColor};
+    text-transform: uppercase;
   }
-
-  a {
-    color: inherit;
-    text-decoration: none;
+  button{
+    text-transform: uppercase;
+    font-weight: 600;
   }
 
   * {
@@ -26,7 +26,7 @@ html,
     padding: 0px;
   }
   html{
-    font-size: 16px;
+    font-size: 16px !important;
   }
 `;
 
