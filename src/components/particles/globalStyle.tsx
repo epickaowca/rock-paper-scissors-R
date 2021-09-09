@@ -1,7 +1,9 @@
 import { createGlobalStyle } from "styled-components";
 
 const GlobalStyles = createGlobalStyle`
-  html,
+@import url('https://fonts.googleapis.com/css2?family=Barlow+Semi+Condensed:wght@600;700&display=swap');  
+
+html,
   body {
     overflow-x: hidden;
     margin: 0px !important;
@@ -9,6 +11,7 @@ const GlobalStyles = createGlobalStyle`
   }
   body{
     min-height: 100vh;
+    background: #1F3756;
   }
 
   a {
