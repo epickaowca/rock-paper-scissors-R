@@ -2,15 +2,11 @@ import { FC } from "react";
 import StyledScoreDisplayer from "./ScoreDisplay.style";
 import Typography from "../../atoms/typography/Typography";
 
-interface SDInterface {
-  points: number;
-}
-
-const ScoreDisplayer: FC<SDInterface> = ({ points }) => {
+const ScoreDisplayer: FC = () => {
   return (
     <StyledScoreDisplayer>
       <Typography content="score" htmlTag="p" color="ScoreText" />
-      <Typography content={points.toString()} htmlTag="h1" color="DarkText" />
+      <Typography content={"12"} htmlTag="h1" color="DarkText" />
     </StyledScoreDisplayer>
   );
 };
