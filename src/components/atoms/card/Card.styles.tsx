@@ -25,7 +25,6 @@ const Colors = {
 const StyledCard = styled.div`
   width: 100px;
   height: 100px;
-  margin: 50px;
 `;
 
 export const CardDiv = styled.div<SCI>((p) => {
