@@ -1,9 +1,12 @@
 import styled, { css } from "styled-components";
 
-export interface SCI {
+export interface SCI extends SCIH {
+  imgName: "rock" | "paper" | "scissors" | "lizard" | "spock";
+}
+
+interface SCIH {
   extendedCase?: boolean;
   battleCase?: boolean;
-  imgName: "rock" | "paper" | "scissors" | "lizard" | "spock";
 }
 
 const Colors = {
@@ -22,9 +25,20 @@ const Colors = {
   spock: ["rgb(64, 185, 206)", "rgb(82, 190, 209)", "rgba(82, 190, 209, 0.59)"],
 };
 
-const StyledCard = styled.div`
-  width: 100px;
-  height: 100px;
+const StyledCard = styled.div<SCIH>`
+  --sizeHSC: ${(p) => (p.extendedCase ? 70 : 80)}px;
+  cursor: pointer;
+  width: var(--sizeHSC);
+  height: var(--sizeHSC);
+  ${(p) => p.theme.media.tablet} {
+    --sizeHSC: ${(p) => (p.extendedCase ? 90 : 110)}px;
+  }
+  ${(p) => p.theme.media.desktop} {
+    --sizeHSC: ${(p) => (p.extendedCase ? 120 : 150)}px;
+  }
+`;
+export const Img = styled.img`
+  width: 50%;
 `;
 
 export const CardDiv = styled.div<SCI>((p) => {
@@ -59,10 +73,5 @@ export const CardDiv = styled.div<SCI>((p) => {
     }
   `;
 });
-
-export const Img = styled.img`
-  max-width: 100%;
-  max-height: 100%;
-`;
 
 export default StyledCard;

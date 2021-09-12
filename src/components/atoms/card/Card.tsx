@@ -5,7 +5,7 @@ const Card: FC<SCI> = (props) => {
   const { imgName } = props;
   const imgSrc = require(`../../../assets/cards/icon-${imgName}.svg`).default;
   return (
-    <StyledCard>
+    <StyledCard {...props}>
       <CardDiv {...props}>
         <Img src={imgSrc} alt={imgName}></Img>
       </CardDiv>
