@@ -7,7 +7,8 @@ export const standardCardSlot = basic.bind({});
 
 export const withAnimation = basic.bind({});
 withAnimation.args = {
-  animation: true,
+  winAnimation: true,
+  startAnimation: false,
 };
 
 export default {

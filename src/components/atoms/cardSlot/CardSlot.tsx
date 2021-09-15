@@ -1,18 +1,30 @@
 import { FC } from "react";
-import StyledCardSlot from "./CardSlot.style";
-import { motion } from "framer-motion";
+import StyledCardSlot, { BoxShadowDiv, AiDiv } from "./CardSlot.style";
 
 interface CardSlotInterface {
-  animation: boolean;
+  winAnimation?: boolean;
+  aiAnimation?: boolean;
 }
 
-const CardSlot: FC<CardSlotInterface> = ({ animation }) => {
+const CardSlot: FC<CardSlotInterface> = ({ winAnimation, aiAnimation }) => {
   return (
     <StyledCardSlot>
-      <motion.div
-        animate={animation ? { scale: 1 } : { scale: 0 }}
-        transition={animation ? { duration: 0.35 } : { duration: 0 }}
-      ></motion.div>
+      <BoxShadowDiv
+        animate={winAnimation ? { scale: 1 } : { scale: 0 }}
+        transition={winAnimation ? { duration: 0.35 } : { duration: 0 }}
+      ></BoxShadowDiv>
+      <AiDiv
+        animate={
+          aiAnimation
+            ? { scale: [0, 1, 1], opacity: [0, 1, 0] }
+            : { scale: 0, opacity: 0 }
+        }
+        transition={
+          aiAnimation
+            ? { ease: "easeInOut", duration: 2, repeat: 2 }
+            : { duration: 0 }
+        }
+      ></AiDiv>
     </StyledCardSlot>
   );
 };

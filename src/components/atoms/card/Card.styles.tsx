@@ -1,3 +1,4 @@
+import { motion } from "framer-motion";
 import styled, { css } from "styled-components";
 
 export interface SCI extends SCIH {
@@ -6,7 +7,6 @@ export interface SCI extends SCIH {
 
 interface SCIH {
   extendedCase?: boolean;
-  battleCase?: boolean;
 }
 
 const Colors = {
@@ -25,7 +25,10 @@ const Colors = {
   spock: ["rgb(64, 185, 206)", "rgb(82, 190, 209)", "rgba(82, 190, 209, 0.59)"],
 };
 
-const StyledCard = styled.div<SCIH>`
+const StyledCard = styled(motion.div)<SCIH>`
+  transform: scale(0);
+  transform-origin: center;
+  z-index: 2;
   --sizeHSC: ${(p) => (p.extendedCase ? 70 : 80)}px;
   cursor: pointer;
   width: var(--sizeHSC);
