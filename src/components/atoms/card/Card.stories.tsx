@@ -6,6 +6,7 @@ const basic: ComponentStory<any> = (args) => <Card {...args} />;
 export const standardCard = basic.bind({});
 standardCard.args = {
   imgName: "lizard",
+  cardAnimation: "player",
 };
 
 export default {

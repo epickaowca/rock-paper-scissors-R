@@ -1,24 +1,39 @@
-import { FC } from "react";
+import { FC, useState, createContext } from "react";
 import StyledBattle, { StyledDiv } from "./Battle.style";
-import Card from "../../atoms/card/Card";
-import CardSlot from "../../atoms/cardSlot/CardSlot";
-import Typography from "../../atoms/typography/Typography";
+import CardDisplay from "../../molecules/cardDisplay/CardDisplay";
+import PlayAgain from "../../molecules/playAgain/PlayAgain";
+
+export const variantH = {
+  visible: { opacity: 1 },
+  hidden: { opacity: 0 },
+};
 
 const Battle: FC = () => {
+  const [startBattle, setStartBattle] = useState(true);
+
   return (
-    <StyledBattle>
+    <StyledBattle
+      initial="hidden"
+      animate={startBattle ? "visible" : "hidden"}
+      transition={{ duration: 0.3 }}
+      variants={variantH}
+    >
       <StyledDiv>
-        <div>
-          <CardSlot />
-          <Card imgName="paper" battleCase />
-          <Typography content="you picked" htmlTag="p" />
-        </div>
-        <div>
-          <CardSlot />
-          <Card imgName="rock" battleCase />
-          {/* <Typography content="the house picked" htmlTag="p" /> */}
-        </div>
+        <CardDisplay
+          animation={startBattle ? "player" : "none"}
+          side="left"
+          win={false}
+        />
+        <CardDisplay
+          animation={startBattle ? "ai" : "none"}
+          side="right"
+          win={false}
+        />
       </StyledDiv>
+      <PlayAgain
+        animationPlayAgain={startBattle}
+        playAgainFunc={() => setStartBattle(false)}
+      />
     </StyledBattle>
   );
 };

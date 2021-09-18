@@ -1,13 +1,21 @@
 import styled from "styled-components";
+import { motion } from "framer-motion";
 
-const StyledCardDisplay = styled.div`
-  margin: 50px;
+export interface SCDInterface {
+  side: "left" | "right";
+}
+
+const StyledCardDisplay = styled(motion.div)<SCDInterface>`
   text-align: center;
   display: flex;
   flex-direction: column;
   gap: 40px;
   ${(p) => p.theme.media.tablet} {
     flex-direction: column-reverse;
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    ${(p) => p.side}: 20%;
   }
 `;
 

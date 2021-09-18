@@ -6,7 +6,7 @@ export interface STI {
 }
 
 const StyledTypography = styled.p<STI>`
-  font-size: ${(p) => (p.htmlTag === "h1" ? "2" : "1")}rem;
+  font-size: ${(p) => (p.htmlTag === "h1" ? "2.5" : "1")}rem;
   font-weight: ${(p) => (p.htmlTag === "h1" ? 700 : 600)};
   color: ${(p) =>
     p.color === "ScoreText"

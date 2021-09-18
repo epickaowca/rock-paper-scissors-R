@@ -3,7 +3,7 @@ import StyledBtn, { SBI } from "./Button.style";
 
 interface BtnInterface extends SBI {
   content: string;
-  onClick: () => {};
+  onClick?: () => void;
 }
 
 const Button: FC<BtnInterface> = ({ content, onClick, ruleCase }) => {

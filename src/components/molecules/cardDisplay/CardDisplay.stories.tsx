@@ -5,7 +5,8 @@ const basic: ComponentStory<any> = (args) => <CardDisplay {...args} />;
 
 export const standardCardDisplay = basic.bind({});
 standardCardDisplay.args = {
-  animation: "none",
+  animation: "ai",
+  side: "left",
 };
 
 export default {

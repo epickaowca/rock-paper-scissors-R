@@ -1,4 +1,4 @@
-import { FC } from "react";
+import { FC, useEffect } from "react";
 import StyledCard, { SCI, CardDiv, Img } from "./Card.styles";
 
 interface CardInterface extends SCI {
@@ -8,14 +8,29 @@ interface CardInterface extends SCI {
 const Card: FC<CardInterface> = (props) => {
   const { imgName, cardAnimation } = props;
   const imgSrc = require(`../../../assets/cards/icon-${imgName}.svg`).default;
+
+  const CardVariant = {
+    stop: {
+      scale: 0,
+      transition: {
+        duration: 0,
+        delay: 0.5,
+      },
+    },
+    play: {
+      scale: 1,
+      transition: {
+        duration: 0.3,
+        delay: cardAnimation === "player" ? 1 : 6,
+      },
+    },
+  };
+
   return (
     <StyledCard
-      animate={{ scale: cardAnimation === "none" ? 0 : 1 }}
-      transition={{
-        duration: cardAnimation === "none" ? 0 : 0.3,
-        delay:
-          cardAnimation === "player" ? 1 : cardAnimation === "none" ? 0 : 6,
-      }}
+      variants={CardVariant}
+      initial={{ scale: 0 }}
+      animate={cardAnimation === "none" ? "stop" : "play"}
       {...props}
     >
       <CardDiv {...props}>
