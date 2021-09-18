@@ -18,6 +18,10 @@ const StyledSelectCard = styled.div`
     height: 100%;
     & > div {
       position: absolute;
+      &:nth-child(1) {
+        top: 20px;
+        transform: translate(-50%, -50%) !important;
+      }
     }
   }
 
@@ -36,22 +40,21 @@ const StyledSelectCard = styled.div`
       & > div {
         &:nth-child(1) {
           left: 20px;
-          top: 20px;
-          transform: translate(-50%, -50%);
         }
         &:nth-child(2) {
-          transform: translate(50%, -50%);
+          transform: translate(50%, -50%) !important;
           top: 20px;
           right: 20px;
         }
         &:nth-child(3) {
           left: 50%;
           bottom: 20px;
-          transform: translateX(-50%);
+          transform: translateX(-50%) !important;
         }
       }
     }
   }
+
   &.extended {
     width: 296px;
     height: 281px;
@@ -65,30 +68,32 @@ const StyledSelectCard = styled.div`
     }
     & > div {
       & > div {
+        &:nth-child(3),
+        &:nth-child(5) {
+          transform: translate(50%, 50%) !important;
+        }
+        &:nth-child(2),
+        &:nth-child(4) {
+          transform: translate(-50%, 50%) !important;
+        }
         &:nth-child(1) {
           left: 50%;
-          top: 20px;
-          transform: translate(-50%, -50%);
         }
         &:nth-child(2) {
           left: 20px;
           top: 10%;
-          transform: translate(-50%, 50%);
         }
         &:nth-child(3) {
           right: 20px;
           top: 10%;
-          transform: translate(50%, 50%);
         }
         &:nth-child(4) {
           left: 20%;
           bottom: 20px;
-          transform: translate(-50%, 50%);
         }
         &:nth-child(5) {
           right: 20%;
           bottom: 20px;
-          transform: translate(50%, 50%);
         }
       }
     }

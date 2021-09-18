@@ -1,12 +1,13 @@
-import { FC, useEffect } from "react";
+import { FC } from "react";
 import StyledCard, { SCI, CardDiv, Img } from "./Card.styles";
 
 interface CardInterface extends SCI {
-  cardAnimation: "player" | "ai" | "none";
+  cardAnimation: "player" | "ai" | "none" | "noAnimation";
+  clickFunc?: (name: string) => void;
 }
 
 const Card: FC<CardInterface> = (props) => {
-  const { imgName, cardAnimation } = props;
+  const { imgName, cardAnimation, clickFunc } = props;
   const imgSrc = require(`../../../assets/cards/icon-${imgName}.svg`).default;
 
   const CardVariant = {
@@ -28,9 +29,16 @@ const Card: FC<CardInterface> = (props) => {
 
   return (
     <StyledCard
+      onClick={() => clickFunc && clickFunc(imgName)}
       variants={CardVariant}
-      initial={{ scale: 0 }}
-      animate={cardAnimation === "none" ? "stop" : "play"}
+      initial={cardAnimation === "noAnimation" ? { scale: 1 } : { scale: 0 }}
+      animate={
+        cardAnimation === "none"
+          ? "stop"
+          : cardAnimation === "noAnimation"
+          ? {}
+          : "play"
+      }
       {...props}
     >
       <CardDiv {...props}>

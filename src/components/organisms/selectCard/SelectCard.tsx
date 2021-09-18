@@ -24,7 +24,12 @@ const SelectCard: FC<SelectCardInterface> = ({ gameType }) => {
       <img src={BgImg} alt="background_image" />
       <div>
         {arrH.map((elem) => (
-          <Card imgName={elem} extendedCase={gameType === "extended"} />
+          <Card
+            clickFunc={(name) => console.log(name)}
+            imgName={elem}
+            extendedCase={gameType === "extended"}
+            cardAnimation="noAnimation"
+          />
         ))}
       </div>
     </StyledSelectCard>
