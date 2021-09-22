@@ -1,13 +1,14 @@
 import styled from "styled-components";
 import { motion } from "framer-motion";
+import { GCChildrenStyles } from "../gameContainer/GameContainer.style";
 
 const StyledBattle = styled(motion.div)`
+  ${GCChildrenStyles};
   display: flex;
   flex-direction: column;
   gap: 25px;
   position: relative;
   justify-content: center;
-  margin: 100px auto;
   ${(p) => p.theme.media.tablet} {
     height: 300px;
     max-width: 600px;

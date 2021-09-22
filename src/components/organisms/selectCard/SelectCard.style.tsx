@@ -1,10 +1,10 @@
 import styled from "styled-components";
+import { motion } from "framer-motion";
+import { GCChildrenStyles } from "../gameContainer/GameContainer.style";
 
-const StyledSelectCard = styled.div`
-  position: relative;
+const StyledSelectCard = styled(motion.div)`
+  ${GCChildrenStyles};
   z-index: 1;
-  margin: auto;
-  margin-top: 150px;
   & > img {
     z-index: 1;
     position: absolute;

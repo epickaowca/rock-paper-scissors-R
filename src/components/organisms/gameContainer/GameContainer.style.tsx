@@ -1,4 +1,11 @@
-import styled from "styled-components";
+import styled, { css } from "styled-components";
+
+export const GCChildrenStyles = css`
+  position: absolute;
+  left: 50%;
+  top: 100px;
+  transform: translateX(-50%);
+`;
 
 const StyledGameContainer = styled.div``;
 

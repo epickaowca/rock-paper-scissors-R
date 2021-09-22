@@ -1,8 +1,9 @@
 import { motion } from "framer-motion";
 import styled, { css } from "styled-components";
+import { cardType } from "../../particles/utlis";
 
 export interface SCI extends SCIH {
-  imgName: "rock" | "paper" | "scissors" | "lizard" | "spock";
+  imgName: cardType;
 }
 
 interface SCIH {
