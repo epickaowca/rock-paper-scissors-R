@@ -1,13 +1,13 @@
-import { winner } from "./utlis";
+import { getWinner } from "./utlis";
 
 describe("winnerFunc", () => {
   it("returns the winning card", () => {
-    expect(winner("rock", "paper", "standard")).toBe("paper");
+    expect(getWinner("rock", "paper", "standard")).toBe("paper");
   });
   it("returns the winning card", () => {
-    expect(winner("lizard", "scissors", "extended")).toBe("scissors");
+    expect(getWinner("lizard", "scissors", "extended")).toBe("scissors");
   });
   it("returns draw", () => {
-    expect(winner("paper", "paper", "standard")).toBe("draw");
+    expect(getWinner("paper", "paper", "standard")).toBe("draw");
   });
 });

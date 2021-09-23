@@ -16,6 +16,7 @@ export interface SelectCardInterface {
 const SelectCard: FC<SelectCardInterface> = ({ gameType }) => {
   const GCCPV = useContext(GCCP);
   const stage = GCCPV?.GCContext.stage;
+  console.log(GCCPV?.GCContext);
 
   const arrH = gameType === "standard" ? set : (fullSet as fullSetType);
   const BgImg = require(`../../../assets/bg-${
@@ -33,7 +34,11 @@ const SelectCard: FC<SelectCardInterface> = ({ gameType }) => {
         {arrH.map((elem) => (
           <Card
             clickFunc={(name) =>
-              GCCPV?.setGCContext((prev) => ({ ...prev, stage: "battle" }))
+              GCCPV?.setGCContext((prev) => ({
+                ...prev,
+                stage: "battle",
+                playerPick: name,
+              }))
             }
             imgName={elem}
             extendedCase={gameType === "extended"}

@@ -1,10 +1,10 @@
 import { FC } from "react";
 import StyledCard, { SCI, CardDiv, Img } from "./Card.styles";
-import { winner } from "../../particles/utlis";
+import { cardType } from "../../particles/utlis";
 
 interface CardInterface extends SCI {
   cardAnimation: "player" | "ai" | "none" | "noAnimation";
-  clickFunc?: (name: string) => void;
+  clickFunc?: (name: cardType) => void;
 }
 
 const Card: FC<CardInterface> = (props) => {

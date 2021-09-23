@@ -1,7 +1,13 @@
 export type cardType = "rock" | "paper" | "scissors" | "lizard" | "spock";
-export const fullSet = ["scissors", "paper", "rock", "lizard", "spock"];
+export const fullSet: ["scissors", "paper", "rock", "lizard", "spock"] = [
+  "scissors",
+  "paper",
+  "rock",
+  "lizard",
+  "spock",
+];
 
-export const winner = (
+export const getWinner = (
   card1: cardType,
   card2: cardType,
   mode: "standard" | "extended"
@@ -10,16 +16,30 @@ export const winner = (
   const C2I = fullSet.findIndex((e) => e === card2);
   let max = mode === "standard" ? 2 : 4;
 
+  console.log(C1I);
+  console.log(C2I);
+
   let res = "error";
 
-  let C1IH = C1I === max ? -1 : C1I;
+  let C1IPN = mode === "standard" ? C1I + 1 : C1I + 3;
+
+  if (C1IPN > max) {
+    C1IPN -= max + 1;
+  }
+
   if (C1I === C2I) {
     res = "draw";
-  } else if (C1IH + 1 === C2I || C1IH + 3 === C2I) {
+  } else if (C1IPN === C2I) {
     res = card1;
   } else {
     res = card2;
   }
 
   return res;
+};
+
+export const getRandom = (min: number, max: number) => {
+  min = Math.ceil(min);
+  max = Math.floor(max);
+  return Math.floor(Math.random() * (max - min)) + min;
 };

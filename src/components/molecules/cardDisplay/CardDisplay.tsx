@@ -5,16 +5,23 @@ import StyledCardDisplay, {
 } from "./CardDisplay.style";
 import CardSlot from "../../atoms/cardSlot/CardSlot";
 import Card from "../../atoms/card/Card";
+import { SCI } from "../../atoms/card/Card.styles";
 import Typography from "../../atoms/typography/Typography";
 
 interface CardDisplayInterface extends SCDInterface {
   animation: "player" | "ai" | "none";
   win?: boolean;
+  imgName: SCI["imgName"];
 }
 
 const noneTransition = { delay: 1, duration: 0 };
 
-const CardDisplay: FC<CardDisplayInterface> = ({ animation, win, side }) => {
+const CardDisplay: FC<CardDisplayInterface> = ({
+  animation,
+  win,
+  side,
+  imgName,
+}) => {
   return (
     <StyledCardDisplay
       side={side}
@@ -24,9 +31,12 @@ const CardDisplay: FC<CardDisplayInterface> = ({ animation, win, side }) => {
     >
       <DivContainer>
         <CardSlot aiAnimation={animation === "ai"} winAnimation={win} />
-        <Card imgName="paper" cardAnimation={animation} />
+        <Card imgName={imgName} cardAnimation={animation} />
       </DivContainer>
-      <Typography content="you picked" htmlTag="p" />
+      <Typography
+        content={animation === "player" ? "you picked" : "the house picked"}
+        htmlTag="p"
+      />
     </StyledCardDisplay>
   );
 };
