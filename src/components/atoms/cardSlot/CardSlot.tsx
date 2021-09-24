@@ -10,10 +10,16 @@ const CardSlot: FC<CardSlotInterface> = ({ winAnimation, aiAnimation }) => {
   return (
     <StyledCardSlot>
       <BoxShadowDiv
+        initial={{ scale: 0 }}
         animate={winAnimation ? { scale: 1 } : { scale: 0 }}
-        transition={winAnimation ? { duration: 0.35 } : { duration: 0 }}
+        transition={
+          winAnimation
+            ? { duration: 0.35, delay: 7 }
+            : { duration: 0, delay: 0 }
+        }
       ></BoxShadowDiv>
       <AiDiv
+        initial={{ scale: 0, opacity: 0 }}
         animate={
           aiAnimation
             ? { scale: [0, 1, 1], opacity: [0, 1, 0] }

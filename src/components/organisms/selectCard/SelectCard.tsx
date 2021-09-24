@@ -33,6 +33,7 @@ const SelectCard: FC<SelectCardInterface> = ({ gameType }) => {
       <div>
         {arrH.map((elem) => (
           <Card
+            key={elem}
             clickFunc={(name) =>
               GCCPV?.setGCContext((prev) => ({
                 ...prev,

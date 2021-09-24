@@ -22,6 +22,7 @@ const CardDisplay: FC<CardDisplayInterface> = ({
   side,
   imgName,
 }) => {
+  console.log(win);
   return (
     <StyledCardDisplay
       side={side}

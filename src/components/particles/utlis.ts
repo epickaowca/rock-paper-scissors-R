@@ -16,9 +16,6 @@ export const getWinner = (
   const C2I = fullSet.findIndex((e) => e === card2);
   let max = mode === "standard" ? 2 : 4;
 
-  console.log(C1I);
-  console.log(C2I);
-
   let res = "error";
 
   let C1IPN = mode === "standard" ? C1I + 1 : C1I + 3;

@@ -1,4 +1,4 @@
-import { FC, useContext } from "react";
+import { FC, useContext, useEffect, useState } from "react";
 import StyledBattle, { StyledDiv } from "./Battle.style";
 import CardDisplay from "../../molecules/cardDisplay/CardDisplay";
 import PlayAgain from "../../molecules/playAgain/PlayAgain";
@@ -17,14 +17,25 @@ export const variantH = {
 
 const Battle: FC = () => {
   const GCCPV = useContext(GCCP);
-  const stage = GCCPV?.GCContext.stage;
-  const playerPick = GCCPV?.GCContext.playerPick;
+  console.log("czesc");
+  console.log(GCCPV.GCContext);
+
+  const stage = GCCPV.GCContext.stage;
+  const playerPick = GCCPV.GCContext.playerPick;
   const battleTime = stage === "battle";
-  const computerPick = fullSet[getRandom(0, 4)];
 
-  const winner = getWinner("rock", "scissors", "extended");
+  const [computerPick, setComputerPick]: any = useState("");
 
-  console.log(winner);
+  useEffect(() => {
+    if (stage === "battle") {
+      setComputerPick(fullSet[getRandom(0, 2)]);
+    }
+  }, [stage]);
+
+  const PlayAgainFunc = () => {
+    setComputerPick("");
+    GCCPV?.setGCContext((prev) => ({ ...prev, stage: "selectCard" }));
+  };
 
   return (
     <StyledBattle
@@ -38,20 +49,21 @@ const Battle: FC = () => {
           imgName={playerPick}
           animation={battleTime ? "player" : "none"}
           side="left"
-          win={false}
+          win={getWinner(playerPick, computerPick, "standard") === playerPick}
         />
         <CardDisplay
-          imgName={computerPick}
+          imgName={computerPick ? computerPick : "rock"}
           animation={battleTime ? "ai" : "none"}
           side="right"
-          win={false}
+          win={
+            computerPick &&
+            getWinner(playerPick, computerPick, "standard") === computerPick
+          }
         />
       </StyledDiv>
       <PlayAgain
         animationPlayAgain={battleTime}
-        playAgainFunc={() =>
-          GCCPV?.setGCContext((prev) => ({ ...prev, stage: "selectCard" }))
-        }
+        playAgainFunc={PlayAgainFunc}
       />
     </StyledBattle>
   );
