@@ -1,4 +1,4 @@
-import { FC, useContext } from "react";
+import { FC } from "react";
 import StyledCardDisplay, {
   DivContainer,
   SCDInterface,
@@ -22,7 +22,6 @@ const CardDisplay: FC<CardDisplayInterface> = ({
   side,
   imgName,
 }) => {
-  console.log(win);
   return (
     <StyledCardDisplay
       side={side}

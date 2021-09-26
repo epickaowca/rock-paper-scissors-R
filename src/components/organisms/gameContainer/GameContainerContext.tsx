@@ -1,5 +1,6 @@
-import { FC, createContext, useState } from "react";
+import { FC, useState } from "react";
 import { SCI } from "../../atoms/card/Card.styles";
+import { createContext } from "use-context-selector";
 
 interface ProviderInterface {
   GCContext: {

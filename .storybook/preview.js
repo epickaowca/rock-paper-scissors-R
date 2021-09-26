@@ -3,14 +3,17 @@ import { ThemeProvider } from "styled-components";
 import { myTheme } from "../src/components/particles/themeProvider/themeProvider";
 import GlobalStyles from "../src/components/particles/globalStyle";
 import GameContainerContext from "../src/components/organisms/gameContainer/GameContainerContext";
+import HomeContext from "../src/pages/home/HomeContext";
 
 export const decorators = [
   (Story) => (
     <ThemeProvider theme={myTheme}>
-      <GameContainerContext>
-        <GlobalStyles />
-        <Story />
-      </GameContainerContext>
+      <HomeContext>
+        <GameContainerContext>
+          <GlobalStyles />
+          <Story />
+        </GameContainerContext>
+      </HomeContext>
     </ThemeProvider>
   ),
 ];

@@ -1,9 +1,10 @@
-import { FC, useContext, useEffect, useState } from "react";
+import { FC, useEffect, useState } from "react";
 import StyledBattle, { StyledDiv } from "./Battle.style";
 import CardDisplay from "../../molecules/cardDisplay/CardDisplay";
 import PlayAgain from "../../molecules/playAgain/PlayAgain";
 import { GCCP } from "../gameContainer/GameContainerContext";
 import { fullSet, getRandom, getWinner } from "../../particles/utlis";
+import { useContextSelector } from "use-context-selector";
 
 export const variantH = {
   visible: { opacity: 1, visibility: "visible" },
@@ -15,28 +16,23 @@ export const variantH = {
   },
 } as any;
 
-const Battle: FC = () => {
-  const GCCPV = useContext(GCCP);
-  console.log("czesc");
-  console.log(GCCPV.GCContext);
-
-  const stage = GCCPV.GCContext.stage;
-  const playerPick = GCCPV.GCContext.playerPick;
+const Battle: FC<{ gameType: "standard" | "extended" }> = ({ gameType }) => {
+  const stateDispatch = useContextSelector(GCCP, (s) => s.setGCContext);
+  const stage = useContextSelector(GCCP, (s) => s.GCContext.stage);
+  const playerPick = useContextSelector(GCCP, (s) => s.GCContext.playerPick);
   const battleTime = stage === "battle";
-
   const [computerPick, setComputerPick]: any = useState("");
-
   useEffect(() => {
     if (stage === "battle") {
-      setComputerPick(fullSet[getRandom(0, 2)]);
+      setComputerPick(fullSet[getRandom(0, gameType === "standard" ? 2 : 4)]);
     }
   }, [stage]);
 
   const PlayAgainFunc = () => {
     setComputerPick("");
-    GCCPV?.setGCContext((prev) => ({ ...prev, stage: "selectCard" }));
+    stateDispatch((prev) => ({ ...prev, stage: "selectCard" }));
   };
-
+  const winner = getWinner(playerPick, computerPick, gameType);
   return (
     <StyledBattle
       initial="hidden"
@@ -49,21 +45,19 @@ const Battle: FC = () => {
           imgName={playerPick}
           animation={battleTime ? "player" : "none"}
           side="left"
-          win={getWinner(playerPick, computerPick, "standard") === playerPick}
+          win={winner === "player"}
         />
         <CardDisplay
           imgName={computerPick ? computerPick : "rock"}
           animation={battleTime ? "ai" : "none"}
           side="right"
-          win={
-            computerPick &&
-            getWinner(playerPick, computerPick, "standard") === computerPick
-          }
+          win={computerPick && winner === "computer"}
         />
       </StyledDiv>
       <PlayAgain
         animationPlayAgain={battleTime}
         playAgainFunc={PlayAgainFunc}
+        winner={computerPick !== "" && winner}
       />
     </StyledBattle>
   );

@@ -1,4 +1,4 @@
-import { FC } from "react";
+import React, { FC } from "react";
 import StyledCard, { SCI, CardDiv, Img } from "./Card.styles";
 import { cardType } from "../../particles/utlis";
 
@@ -10,7 +10,6 @@ interface CardInterface extends SCI {
 const Card: FC<CardInterface> = (props) => {
   const { imgName, cardAnimation, clickFunc } = props;
   const imgSrc = require(`../../../assets/cards/icon-${imgName}.svg`).default;
-
   const CardVariant = {
     stop: {
       scale: 0,
@@ -49,4 +48,4 @@ const Card: FC<CardInterface> = (props) => {
   );
 };
 
-export default Card;
+export default React.memo(Card);

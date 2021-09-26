@@ -7,11 +7,13 @@ export const fullSet: ["scissors", "paper", "rock", "lizard", "spock"] = [
   "spock",
 ];
 
+export type winnerReturnType = "error" | "draw" | "player" | "computer";
+
 export const getWinner = (
   card1: cardType,
   card2: cardType,
   mode: "standard" | "extended"
-) => {
+): winnerReturnType => {
   const C1I = fullSet.findIndex((e) => e === card1);
   const C2I = fullSet.findIndex((e) => e === card2);
   let max = mode === "standard" ? 2 : 4;
@@ -26,13 +28,13 @@ export const getWinner = (
 
   if (C1I === C2I) {
     res = "draw";
-  } else if (C1IPN === C2I) {
-    res = card1;
+  } else if (C1I + 1 === C2I || C1IPN === C2I) {
+    res = "player";
   } else {
-    res = card2;
+    res = "computer";
   }
 
-  return res;
+  return res as any;
 };
 
 export const getRandom = (min: number, max: number) => {
