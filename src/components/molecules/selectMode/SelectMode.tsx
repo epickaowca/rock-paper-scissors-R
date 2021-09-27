@@ -18,14 +18,16 @@ const SelectMode: FC<{ startGame: () => void }> = ({ startGame }) => {
   return (
     <StyledSelectMode>
       <Typography htmlTag="h1" content="Select a mode" />
-      {BtnTab.map((option) => (
-        <Button
-          key={option}
-          ruleCase
-          content={option}
-          onClick={() => BtnClickHandler(option)}
-        />
-      ))}
+      <div>
+        {BtnTab.map((option) => (
+          <Button
+            key={option}
+            ruleCase
+            content={option}
+            onClick={() => BtnClickHandler(option)}
+          />
+        ))}
+      </div>
     </StyledSelectMode>
   );
 };
