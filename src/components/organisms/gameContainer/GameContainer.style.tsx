@@ -3,7 +3,7 @@ import styled, { css } from "styled-components";
 export const GCChildrenStyles = css`
   position: absolute;
   left: 50%;
-  top: 100px;
+  top: 50px;
   transform: translateX(-50%);
 `;
 

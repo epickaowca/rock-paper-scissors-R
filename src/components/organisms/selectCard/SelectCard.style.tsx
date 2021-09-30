@@ -24,17 +24,18 @@ const StyledSelectCard = styled(motion.div)`
       }
     }
   }
-
   &.standard {
     width: 244px;
-    height: 221px;
+    height: 281px;
     ${(p) => p.theme.media.tablet} {
-      width: 341px;
-      height: 309px;
+      top: 70px;
+      width: 420px;
+      height: 380px;
     }
     ${(p) => p.theme.media.desktop} {
+      top: 120px;
       width: 477px;
-      height: 432px;
+      height: 500px;
     }
     & > div {
       & > div {
@@ -59,12 +60,13 @@ const StyledSelectCard = styled(motion.div)`
     width: 296px;
     height: 281px;
     ${(p) => p.theme.media.tablet} {
-      width: 384.8px;
-      height: 305px;
+      width: 480px;
+      height: 400px;
     }
     ${(p) => p.theme.media.desktop} {
-      width: 539px;
-      height: 427px;
+      top: 70px;
+      width: 580px;
+      height: 470px;
     }
     & > div {
       & > div {

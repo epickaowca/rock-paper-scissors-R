@@ -11,8 +11,8 @@ const StyledCardDisplay = styled(motion.div)<SCDInterface>`
   flex-direction: column;
   gap: 40px;
   ${(p) => p.theme.media.tablet} {
-    flex-direction: column-reverse;
     position: absolute;
+    flex-direction: column-reverse;
     top: 50%;
     transform: translateY(-50%);
     ${(p) => p.side}: 20%;

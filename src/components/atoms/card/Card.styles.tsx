@@ -1,6 +1,7 @@
 import { motion } from "framer-motion";
 import styled, { css } from "styled-components";
 import { cardType } from "../../particles/utlis";
+import { DivContainer } from "../../molecules/cardDisplay/CardDisplay.style";
 
 export interface SCI extends SCIH {
   imgName: cardType;
@@ -35,10 +36,19 @@ const StyledCard = styled(motion.div)<SCIH>`
   width: var(--sizeHSC);
   height: var(--sizeHSC);
   ${(p) => p.theme.media.tablet} {
-    --sizeHSC: ${(p) => (p.extendedCase ? 90 : 110)}px;
+    --sizeHSC: ${(p) => (p.extendedCase ? 105 : 120)}px;
   }
   ${(p) => p.theme.media.desktop} {
-    --sizeHSC: ${(p) => (p.extendedCase ? 120 : 150)}px;
+    --sizeHSC: ${(p) => (p.extendedCase ? 130 : 150)}px;
+  }
+  ${DivContainer} & {
+    --sizeHSC: 95px;
+    ${(p) => p.theme.media.tablet} {
+      --sizeHSC: 140px;
+    }
+    ${(p) => p.theme.media.tablet} {
+      --sizeHSC: 170px;
+    }
   }
 `;
 export const Img = styled.img`

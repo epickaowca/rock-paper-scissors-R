@@ -2,22 +2,21 @@ import styled from "styled-components";
 import { motion } from "framer-motion";
 
 const StyledCardSlot = styled(motion.div)`
+  --cardSize: 100px;
   display: flex;
   align-items: center;
   justify-content: center;
   position: relative;
   z-index: 1;
   background: #192845;
-  width: 100px;
-  height: 100px;
+  width: var(--cardSize);
+  height: var(--cardSize);
   border-radius: 50%;
   ${(p) => p.theme.media.tablet} {
-    width: 140px;
-    height: 140px;
+    --cardSize: 160px;
   }
   ${(p) => p.theme.media.desktop} {
-    width: 190px;
-    height: 190px;
+    --cardSize: 200px;
   }
 `;
 

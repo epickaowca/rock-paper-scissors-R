@@ -9,19 +9,21 @@ const StyledBattle = styled(motion.div)`
   gap: 25px;
   position: relative;
   justify-content: center;
+  max-width: 400px;
+  width: 80%;
   ${(p) => p.theme.media.tablet} {
+    width: 100%;
     height: 300px;
     max-width: 600px;
   }
   ${(p) => p.theme.media.desktop} {
-    max-width: 800px;
+    max-width: 900px;
   }
 `;
 
 export const StyledDiv = styled(motion.div)`
   display: flex;
-  justify-content: center;
-  gap: 70px;
+  justify-content: space-between;
 `;
 
 export default StyledBattle;
