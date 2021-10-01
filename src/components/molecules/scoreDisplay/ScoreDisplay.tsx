@@ -6,7 +6,6 @@ import { useContextSelector } from "use-context-selector";
 
 const ScoreDisplayer: FC = () => {
   const scores = useContextSelector(HCP, (s) => s.GCContext.scores);
-
   return (
     <StyledScoreDisplayer>
       <Typography content="score" htmlTag="p" color="ScoreText" />

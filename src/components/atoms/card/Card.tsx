@@ -1,4 +1,4 @@
-import React, { FC } from "react";
+import { FC, memo } from "react";
 import StyledCard, { SCI, CardDiv, Img } from "./Card.styles";
 import { cardType } from "../../particles/utlis";
 
@@ -48,4 +48,4 @@ const Card: FC<CardInterface> = (props) => {
   );
 };
 
-export default React.memo(Card);
+export default memo(Card);

@@ -1,10 +1,10 @@
-import { FC } from "react";
+import { FC, useCallback } from "react";
 import StyledSelectCard from "./SelectCard.style";
 import Card from "../../atoms/card/Card";
 import cs from "classnames";
 import { GCCP } from "../gameContainer/GameContainerContext";
 import { variantH } from "../battle/Battle";
-import { fullSet } from "../../particles/utlis";
+import { fullSet, getRandom } from "../../particles/utlis";
 import { useContextSelector } from "use-context-selector";
 import ImgComponent from "../../atoms/imgComponent/ImgComponent";
 
@@ -20,6 +20,17 @@ const SelectCard: FC<SelectCardInterface> = ({ gameType }) => {
   const dispatchState = useContextSelector(GCCP, (s) => s.setGCContext);
   const arrH = gameType === "standard" ? set : (fullSet as fullSetType);
   const bgImg = gameType === "standard" ? "bg-triangle.svg" : "bg-pentagon.svg";
+  const pickCard = useCallback(
+    (name) => {
+      dispatchState((prev) => ({
+        ...prev,
+        stage: "battle",
+        playerPick: name,
+        computerPick: fullSet[getRandom(0, gameType === "standard" ? 2 : 4)],
+      }));
+    },
+    [dispatchState]
+  );
 
   return (
     <StyledSelectCard
@@ -33,13 +44,7 @@ const SelectCard: FC<SelectCardInterface> = ({ gameType }) => {
         {arrH.map((elem) => (
           <Card
             key={elem}
-            clickFunc={(name) =>
-              dispatchState((prev) => ({
-                ...prev,
-                stage: "battle",
-                playerPick: name,
-              }))
-            }
+            clickFunc={pickCard}
             imgName={elem}
             extendedCase={gameType === "extended"}
             cardAnimation="noAnimation"

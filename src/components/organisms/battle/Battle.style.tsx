@@ -14,7 +14,7 @@ const StyledBattle = styled(motion.div)`
   ${(p) => p.theme.media.tablet} {
     width: 100%;
     height: 300px;
-    max-width: 600px;
+    max-width: 750px;
   }
   ${(p) => p.theme.media.desktop} {
     max-width: 900px;

@@ -34,7 +34,7 @@ const CardDisplay: FC<CardDisplayInterface> = ({
         <Card imgName={imgName} cardAnimation={animation} />
       </DivContainer>
       <Typography
-        content={animation === "player" ? "you picked" : "the house picked"}
+        content={side === "left" ? "you picked" : "the house picked"}
         htmlTag="p"
       />
     </StyledCardDisplay>

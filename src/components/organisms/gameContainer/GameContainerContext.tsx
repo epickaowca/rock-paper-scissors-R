@@ -6,6 +6,7 @@ interface ProviderInterface {
   GCContext: {
     stage: "selectCard" | "battle";
     playerPick: SCI["imgName"];
+    computerPick: SCI["imgName"];
     winner: "player" | "computer" | "draw" | "null";
   };
 
@@ -13,6 +14,7 @@ interface ProviderInterface {
     React.SetStateAction<{
       stage: "selectCard" | "battle";
       playerPick: SCI["imgName"];
+      computerPick: SCI["imgName"];
       winner: "player" | "computer" | "draw" | "null";
     }>
   >;
@@ -24,6 +26,7 @@ const GameContainerContext: FC = ({ children }) => {
   const [GCContext, setGCContext] = useState({
     stage: "selectCard",
     playerPick: "rock",
+    computerPick: "rock",
     winner: "null",
   } as ProviderInterface["GCContext"]);
 

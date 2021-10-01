@@ -1,4 +1,4 @@
-import { FC } from "react";
+import { FC, memo } from "react";
 
 interface ImgComponentInterface {
   imgName: string;
@@ -10,4 +10,4 @@ const ImgComponent: FC<ImgComponentInterface> = ({ imgName, alt }) => {
   return <img src={srcImg} alt={alt}></img>;
 };
 
-export default ImgComponent;
+export default memo(ImgComponent);

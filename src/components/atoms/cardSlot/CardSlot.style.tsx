@@ -13,7 +13,7 @@ const StyledCardSlot = styled(motion.div)`
   height: var(--cardSize);
   border-radius: 50%;
   ${(p) => p.theme.media.tablet} {
-    --cardSize: 160px;
+    --cardSize: 200px;
   }
   ${(p) => p.theme.media.desktop} {
     --cardSize: 200px;

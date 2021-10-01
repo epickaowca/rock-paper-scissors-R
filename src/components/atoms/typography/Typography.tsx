@@ -1,4 +1,4 @@
-import { FC } from "react";
+import { FC, memo } from "react";
 import StyledTypography, { STI } from "./Typography.style";
 
 interface TI extends STI {
@@ -14,4 +14,4 @@ const Typography: FC<TI> = (props) => {
   );
 };
 
-export default Typography;
+export default memo(Typography);
