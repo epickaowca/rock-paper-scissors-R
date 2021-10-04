@@ -1,7 +1,12 @@
 import styled from "styled-components";
 import { motion } from "framer-motion";
 
-const StyledCardSlot = styled(motion.div)`
+const StyledCardSlot = styled(motion.div)(
+  ({
+    theme: {
+      media: { tablet, desktop },
+    },
+  }) => `
   --cardSize: 100px;
   display: flex;
   align-items: center;
@@ -12,13 +17,14 @@ const StyledCardSlot = styled(motion.div)`
   width: var(--cardSize);
   height: var(--cardSize);
   border-radius: 50%;
-  ${(p) => p.theme.media.tablet} {
+  ${tablet} {
     --cardSize: 200px;
   }
-  ${(p) => p.theme.media.desktop} {
+  ${desktop} {
     --cardSize: 200px;
   }
-`;
+`
+);
 
 export const BoxShadowDiv = styled(motion.div)`
   width: 100%;

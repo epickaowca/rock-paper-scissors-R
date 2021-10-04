@@ -27,30 +27,37 @@ const Colors = {
   spock: ["rgb(64, 185, 206)", "rgb(82, 190, 209)", "rgba(82, 190, 209, 0.59)"],
 };
 
-const StyledCard = styled(motion.div)<SCIH>`
+const StyledCard = styled(motion.div)<SCIH>(
+  ({
+    extendedCase,
+    theme: {
+      media: { tablet, desktop },
+    },
+  }) => `
   transform: scale(0);
   transform-origin: center;
   z-index: 2;
-  --sizeHSC: ${(p) => (p.extendedCase ? 70 : 80)}px;
+  --sizeHSC: ${extendedCase ? 70 : 80}px;
   cursor: pointer;
   width: var(--sizeHSC);
   height: var(--sizeHSC);
-  ${(p) => p.theme.media.tablet} {
-    --sizeHSC: ${(p) => (p.extendedCase ? 105 : 120)}px;
+  ${tablet} {
+    --sizeHSC: ${extendedCase ? 105 : 120}px;
   }
-  ${(p) => p.theme.media.desktop} {
-    --sizeHSC: ${(p) => (p.extendedCase ? 130 : 150)}px;
+  ${desktop} {
+    --sizeHSC: ${extendedCase ? 130 : 150}px;
   }
   ${DivContainer} & {
     --sizeHSC: 95px;
-    ${(p) => p.theme.media.tablet} {
+    ${tablet} {
       --sizeHSC: 140px;
     }
-    ${(p) => p.theme.media.tablet} {
+    ${tablet} {
       --sizeHSC: 170px;
     }
   }
-`;
+`
+);
 export const Img = styled.img`
   width: 50%;
 `;

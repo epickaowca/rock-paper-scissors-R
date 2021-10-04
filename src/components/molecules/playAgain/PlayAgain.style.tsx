@@ -6,9 +6,10 @@ const StyledPlayAgain = styled(motion.div)`
   flex-direction: column;
   align-items: center;
   gap: 15px;
-  margin-top: 220px;
+  margin-top: 50px;
+  margin-bottom: 100px;
   ${(p) => p.theme.media.tablet} {
-    margin-top: 0px;
+    margin: 0px;
   }
 `;
 

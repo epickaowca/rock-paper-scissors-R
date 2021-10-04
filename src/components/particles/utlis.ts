@@ -1,3 +1,4 @@
+import { useRef, useEffect } from "react";
 export type cardType = "rock" | "paper" | "scissors" | "lizard" | "spock";
 export const fullSet: ["scissors", "paper", "rock", "lizard", "spock"] = [
   "scissors",
@@ -42,3 +43,11 @@ export const getRandom = (min: number, max: number) => {
   max = Math.floor(max);
   return Math.floor(Math.random() * (max - min)) + min;
 };
+
+export function usePrevious<T>(value: T): T | undefined {
+  const ref = useRef<T>();
+  useEffect(() => {
+    ref.current = value;
+  });
+  return ref.current;
+}

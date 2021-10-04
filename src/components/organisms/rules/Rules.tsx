@@ -8,6 +8,7 @@ import { HCP } from "../../../pages/home/HomeContext";
 
 const Rules: FC = () => {
   const ruleVisible = useContextSelector(HCP, (s) => s.GCContext.ruleVisible);
+  const mode = useContextSelector(HCP, (s) => s.GCContext.mode);
   const setContext = useContextSelector(HCP, (s) => s.setGCContext);
 
   const setRules = (option: boolean) => {
@@ -19,7 +20,12 @@ const Rules: FC = () => {
       <StyledDiv>
         <div>
           <Typography htmlTag="h1" content="rules" color="DarkText" />
-          <ImgComponent imgName="image-rules.svg" alt="ruleImg" />
+          <ImgComponent
+            imgName={
+              mode === "standard" ? "image-rules.svg" : "image-rules-bonus.svg"
+            }
+            alt="ruleImg"
+          />
           <img src={closeIco} alt="close" onClick={() => setRules(false)} />
         </div>
       </StyledDiv>

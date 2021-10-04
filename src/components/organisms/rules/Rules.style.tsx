@@ -13,6 +13,7 @@ const positionCss = css`
 
 export const StyledDiv = styled.div`
   ${positionCss};
+  border-radius: 10px;
   position: absolute;
   z-index: 46;
   background: white;
@@ -37,7 +38,7 @@ export const StyledDiv = styled.div`
     }
   }
   ${(p) => p.theme.media.tablet} {
-    max-width: 400px;
+    max-width: 500px;
     height: auto;
     & > div {
       row-gap: 50px;

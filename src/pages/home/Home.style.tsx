@@ -6,7 +6,12 @@ const StyledHome = styled.div`
   align-items: center;
   justify-content: center;
   & > button {
-    margin-top: 250px;
+    margin-top: 50px;
+  }
+  ${(p) => p.theme.media.tablet} {
+    & > button {
+      margin-top: 270px;
+    }
   }
   ${(p) => p.theme.media.desktop} {
     max-width: 1400px;

@@ -7,9 +7,20 @@ import { getWinner } from "../../particles/utlis";
 import { useContextSelector } from "use-context-selector";
 
 export const variantH = {
-  visible: { opacity: 1, visibility: "visible" },
+  visible: {
+    opacity: 1,
+    visibility: "visible",
+    transition: {
+      delay: 1.5,
+      duration: 0.5,
+    },
+  },
   hidden: {
     opacity: 0,
+    transition: {
+      delay: 0.1,
+      duration: 0.3,
+    },
     transitionEnd: {
       visibility: "hidden",
     },
@@ -25,11 +36,8 @@ const Battle: FC<{ gameType: "standard" | "extended" }> = ({ gameType }) => {
     (s) => s.GCContext.computerPick
   );
   const battleTime = stage === "battle";
-
-  const PlayAgainFunc = () => {
-    stateDispatch((prev) => ({ ...prev, stage: "selectCard" }));
-  };
   const winner = getWinner(playerPick, computerPick, gameType);
+
   return (
     <StyledBattle
       initial="hidden"
@@ -53,7 +61,9 @@ const Battle: FC<{ gameType: "standard" | "extended" }> = ({ gameType }) => {
       </StyledDiv>
       <PlayAgain
         animationPlayAgain={battleTime}
-        playAgainFunc={PlayAgainFunc}
+        playAgainFunc={() =>
+          stateDispatch((prev) => ({ ...prev, stage: "selectCard" }))
+        }
         winner={battleTime && winner}
       />
     </StyledBattle>

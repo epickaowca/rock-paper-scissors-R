@@ -20,6 +20,7 @@ const SelectCard: FC<SelectCardInterface> = ({ gameType }) => {
   const dispatchState = useContextSelector(GCCP, (s) => s.setGCContext);
   const arrH = gameType === "standard" ? set : (fullSet as fullSetType);
   const bgImg = gameType === "standard" ? "bg-triangle.svg" : "bg-pentagon.svg";
+
   const pickCard = useCallback(
     (name) => {
       dispatchState((prev) => ({
@@ -43,11 +44,12 @@ const SelectCard: FC<SelectCardInterface> = ({ gameType }) => {
       <div>
         {arrH.map((elem) => (
           <Card
-            key={elem}
             clickFunc={pickCard}
             imgName={elem}
+            key={elem}
             extendedCase={gameType === "extended"}
             cardAnimation="noAnimation"
+            data-cy={elem}
           />
         ))}
       </div>

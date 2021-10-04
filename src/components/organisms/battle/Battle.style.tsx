@@ -2,7 +2,12 @@ import styled from "styled-components";
 import { motion } from "framer-motion";
 import { GCChildrenStyles } from "../gameContainer/GameContainer.style";
 
-const StyledBattle = styled(motion.div)`
+const StyledBattle = styled(motion.div)(
+  ({
+    theme: {
+      media: { tablet, desktop },
+    },
+  }) => `
   ${GCChildrenStyles};
   display: flex;
   flex-direction: column;
@@ -11,15 +16,16 @@ const StyledBattle = styled(motion.div)`
   justify-content: center;
   max-width: 400px;
   width: 80%;
-  ${(p) => p.theme.media.tablet} {
+  ${tablet} {
     width: 100%;
     height: 300px;
     max-width: 750px;
   }
-  ${(p) => p.theme.media.desktop} {
+  ${desktop} {
     max-width: 900px;
   }
-`;
+`
+);
 
 export const StyledDiv = styled(motion.div)`
   display: flex;

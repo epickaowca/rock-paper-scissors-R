@@ -29,8 +29,8 @@ const PlayAgain: FC<PlayAgain> = ({
           ...prev,
           scores:
             winner === "player"
-              ? prev.scores + getRandom(2, 4)
-              : prev.scores - getRandom(1, 5),
+              ? prev.scores + getRandom(2, 3)
+              : prev.scores - getRandom(2, 3),
         }));
       }, 7000);
     }
@@ -39,15 +39,15 @@ const PlayAgain: FC<PlayAgain> = ({
   return (
     <StyledPlayAgain
       initial={{ opacity: 0 }}
-      animate={animationPlayAgain ? "visible" : "hidden"}
+      animate={{ opacity: animationPlayAgain ? 1 : 0 }}
       transition={
         animationPlayAgain
           ? { duration: 0.5, delay: 7 }
-          : { duration: 0, delay: 1 }
+          : { duration: 0, delay: 0.5 }
       }
-      variants={variantH}
     >
       <Typography
+        data-cy="winning_message"
         content={winner && winner !== "error" ? contentH[winner] : ""}
         htmlTag="h1"
       />

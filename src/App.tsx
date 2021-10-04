@@ -1,11 +1,19 @@
 import { FC } from "react";
-import Typo from "./components/atoms/typography/Typography";
+import Home from "./pages/home/Home";
+import { myTheme } from "./components/particles/themeProvider/themeProvider";
+import { ThemeProvider } from "styled-components";
+import HomeContext from "./pages/home/HomeContext";
+import GameContainerContext from "./components/organisms/gameContainer/GameContainerContext";
 
 const App: FC = () => {
   return (
-    <div>
-      <Typo content="Bla Bla" htmlTag="p" />
-    </div>
+    <ThemeProvider theme={myTheme}>
+      <HomeContext>
+        <GameContainerContext>
+          <Home />
+        </GameContainerContext>
+      </HomeContext>
+    </ThemeProvider>
   );
 };
 

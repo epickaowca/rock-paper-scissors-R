@@ -10,7 +10,7 @@ declare module "styled-components" {
       DarkText: "hsl(229, 25%, 31%)";
       ScoreText: "hsl(229, 64%, 46%)";
       HeaderOutline: "hsl(217, 16%, 45%)";
-      bgColor: "#1F3756";
+      bgColor: "#171D3F";
     };
   }
 }
