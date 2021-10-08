@@ -36,8 +36,8 @@ const SelectCard: FC<SelectCardInterface> = ({ gameType }) => {
   return (
     <StyledSelectCard
       className={cs(gameType)}
-      initial={{ opacity: 1 }}
       variants={variantH}
+      initial="hidden"
       animate={stage === "selectCard" ? "visible" : "hidden"}
     >
       <ImgComponent imgName={bgImg} alt="backgroundImg" />

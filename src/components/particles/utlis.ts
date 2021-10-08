@@ -39,9 +39,7 @@ export const getWinner = (
 };
 
 export const getRandom = (min: number, max: number) => {
-  min = Math.ceil(min);
-  max = Math.floor(max);
-  return Math.floor(Math.random() * (max - min)) + min;
+  return Math.round(Math.random() * (max - min)) + min;
 };
 
 export function usePrevious<T>(value: T): T | undefined {

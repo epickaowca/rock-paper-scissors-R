@@ -50,7 +50,7 @@ const Battle: FC<{ gameType: "standard" | "extended" }> = ({ gameType }) => {
           imgName={playerPick}
           animation={battleTime ? "player" : "none"}
           side="left"
-          win={winner === "player"}
+          win={battleTime && winner === "player"}
         />
         <CardDisplay
           imgName={computerPick ? computerPick : "rock"}

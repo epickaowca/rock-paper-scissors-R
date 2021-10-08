@@ -6,6 +6,7 @@ const StyledScoreDisplayer = styled.div`
   display: inline-block;
   padding: 10px 25px;
   text-align: center;
+  position: relative;
   & > p {
     font-size: 0.9rem;
   }

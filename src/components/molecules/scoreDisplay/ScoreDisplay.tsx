@@ -3,16 +3,11 @@ import StyledScoreDisplayer from "./ScoreDisplay.style";
 import Typography from "../../atoms/typography/Typography";
 import { HCP } from "../../../pages/home/HomeContext";
 import { useContextSelector } from "use-context-selector";
-import { usePrevious } from "../../particles/utlis";
+import AddScoreDisplay from "./AddScoreDisplay";
 
 const ScoreDisplayer: FC = () => {
   const scores = useContextSelector(HCP, (s) => s.GCContext.scores);
-  const prevScores = usePrevious(scores);
-  let difference;
-  if (prevScores !== undefined) {
-    difference = scores - prevScores;
-    // console.log(difference > 0 ? "+" + difference : difference);
-  }
+
   return (
     <StyledScoreDisplayer>
       <Typography content="score" htmlTag="p" color="ScoreText" />
@@ -22,6 +17,7 @@ const ScoreDisplayer: FC = () => {
         htmlTag="h1"
         color="DarkText"
       />
+      <AddScoreDisplay scores={scores} />
     </StyledScoreDisplayer>
   );
 };

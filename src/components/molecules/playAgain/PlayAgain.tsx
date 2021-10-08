@@ -2,12 +2,11 @@ import { FC, useEffect } from "react";
 import StyledPlayAgain from "./PlayAgain.style";
 import Typography from "../../atoms/typography/Typography";
 import Button from "../../atoms/button/Button";
-import { variantH } from "../../organisms/battle/Battle";
 import { winnerReturnType, getRandom } from "../../particles/utlis";
 import { HCP } from "../../../pages/home/HomeContext";
 import { useContextSelector } from "use-context-selector";
 
-interface PlayAgain {
+interface PlayAgainInterface {
   animationPlayAgain: boolean;
   playAgainFunc: () => void;
   winner: winnerReturnType | false;
@@ -15,7 +14,7 @@ interface PlayAgain {
 
 const contentH = { player: "you win", computer: "you lose", draw: "draw" };
 
-const PlayAgain: FC<PlayAgain> = ({
+const PlayAgain: FC<PlayAgainInterface> = ({
   animationPlayAgain,
   playAgainFunc,
   winner,
@@ -29,17 +28,21 @@ const PlayAgain: FC<PlayAgain> = ({
           ...prev,
           scores:
             winner === "player"
-              ? prev.scores + getRandom(2, 3)
-              : prev.scores - getRandom(2, 3),
+              ? prev.scores + getRandom(2, 4)
+              : prev.scores - getRandom(2, 4),
         }));
       }, 7000);
     }
-  }, [winner]);
+  }, [winner, dispatchToHome]);
 
   return (
     <StyledPlayAgain
-      initial={{ opacity: 0 }}
-      animate={{ opacity: animationPlayAgain ? 1 : 0 }}
+      initial={{ opacity: 0, visibility: "hidden" }}
+      animate={
+        animationPlayAgain
+          ? { opacity: 1, visibility: "visible" }
+          : { opacity: 0, visibility: "hidden" }
+      }
       transition={
         animationPlayAgain
           ? { duration: 0.5, delay: 7 }
