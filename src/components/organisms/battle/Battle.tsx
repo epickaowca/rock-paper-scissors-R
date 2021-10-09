@@ -11,8 +11,8 @@ export const variantH = {
     opacity: 1,
     visibility: "visible",
     transition: {
-      delay: 1.5,
-      duration: 0.5,
+      delay: 0.7,
+      duration: 0.3,
     },
   },
   hidden: {

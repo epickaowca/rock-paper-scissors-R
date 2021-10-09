@@ -1,11 +1,12 @@
-describe("payment", () => {
-  it("user can make payment", () => {
+describe("game", () => {
+  it("points are added correctly", () => {
     cy.visit("http://localhost:3000/");
 
     cy.findByRole("button", {
       name: /standard/i,
     }).click();
 
+    cy.wait(1000);
     cy.get("[data-cy=rock]").click();
 
     cy.wait(7100);
