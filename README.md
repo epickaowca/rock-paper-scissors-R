@@ -1,5 +1,7 @@
-live: https://rock-paper-scissors-r.vercel.app/
+<h1>Rock Paper Scissors</h1>
 
-storybook: https://rock-paper-scissors-r-storybook.vercel.app/
+live: https://rock-paper-scissors-r.vercel.app
 
-*this project idea come from https://www.frontendmentor.io/
+storybook: https://rock-paper-scissors-r-storybook.vercel.app
+
+portfolio: https://mateuszpiskorz.pl
